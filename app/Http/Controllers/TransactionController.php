@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -65,7 +69,10 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaction = Transaction::find($id);
+        $paket = $transaction->paket->nama;
+        // dd($transaction);
+        return view('pages.admin.transaction.show', compact('transaction'));
     }
 
     /**

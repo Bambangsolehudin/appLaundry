@@ -6,7 +6,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">transaction</h1>
+            <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
           </div>
 
           <!-- Content Row -->
@@ -17,7 +17,13 @@
               
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Data transaction</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Transaksi</h6>
+                        <!-- Button trigger modal -->
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Launch demo modal
+                        </button> --}}
+  
+
                  
                     </div>
                     <div class="card-body">
@@ -35,12 +41,13 @@
                                         {{-- <th>Pelanggan</th>
                                         <th>Paket</th> --}}
                                         <th>Kode Transaction</th>
-                                        <th>Tanggal Terima</th>
-                                        <th>Tanggal selesai</th>
+                                        {{-- <th>Tanggal Terima</th>
+                                        <th>Tanggal selesai</th> --}}
                                         <th>jumlah(kg)</th>
-                                        <th>Total</th>
+                                        {{-- <th>Total</th> --}}
                                         <th>status</th>
                                         <th>Aksi</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,15 +56,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         {{-- <td>{{ $item->pelanggan->nama }}</td> --}}
                                         {{-- <td>{{ $item->paket->nama }}</td> --}}
-                                        <td>{{ $item->kode }}</td>
-                                        <td>{{ date('d F Y', strtotime( $item->tanggal_terima)) }}</td>
-                                        <td>{{ date('d F Y', strtotime( $item->tanggal_selesai)) }}</td>
+                                        <td><a href="{{ route('transaction.show', $item->id) }}">{{ $item->kode }}</a> </td>
+                                        {{-- <td>{{ date('d F Y', strtotime( $item->tanggal_terima)) }}</td>
+                                        <td>{{ date('d F Y', strtotime( $item->tanggal_selesai)) }}</td> --}}
                                         <td>{{ $item->jumlah_kiloan }}</td>
-                                        <td>{{ $item->total }}</td>
+                                        {{-- <td>{{ $item->total }}</td> --}}
                                         <td>{{ $item->status }}</td>
                                         
                                         <td>
-                                            <a href="{{ route('transaction.edit', $item->id) }}" class="badge bg-warning text-dark"> <i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('transaction.edit', $item->id) }}"  id="transaction12" class="badge bg-warning text-dark"> <i class="fas fa-edit"></i></a>
                                             <form method="post" action="{{ route('transaction.destroy', $item->id) }}" class="d-inline">
                                                 @csrf
                                                 @method('delete')
@@ -82,7 +89,11 @@
           {{-- </div> --}}
 
 
-
+          {{-- @include('pages.admin.transaction.show') --}}
         </div>
-        <!-- /.container-fluid -->
+    
+
+
+        {{-- @if(isset($_GET['hello'])) --}}
+        {{-- @endif --}}
 @endsection

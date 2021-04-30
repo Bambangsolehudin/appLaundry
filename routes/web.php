@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.admin.dashboard');
-});
+Route::get('/', 'DashboardController@index');
 
 Route::resource('pelanggan', 'PelangganController');
 Route::resource('paket', 'PaketController');
 Route::resource('transaction', 'TransactionController');
 Route::resource('transaction-out', 'TransactionoutController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,9 +1,9 @@
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-dark sidebar  sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">appLaundry</div>
+      <a class="sidebar-brand align-items-center justify-content-center" href="{{ url('/') }}">
+        <div class="text-lowercase">app<span class="text-primary "><span class="text-uppercase">L</span>aundry</span></div>
       </a>
 
       <!-- Divider -->
@@ -17,7 +17,7 @@
       </li>
             <li class="nav-item">
         <a class="nav-link" href="{{ route('pelanggan.index') }}">
-          <i class="fas fa-fw fa-hotel"></i>
+          <i class="fas fa-fw fa-users"></i>
           <span>Pelanggan</span></a>
       </li>
       <li class="nav-item">
@@ -27,13 +27,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('transaction.index') }}">
-          <i class="fas fa-fw fa-sign"></i>
+          <i class="fas fa-fw fa-money-check"></i>
           <span>Transaksi-Laundry</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('transaction-out.index') }}">
-          <i class="fas fa-fw fa-sign"></i>
-          <span>Transaksi</span></a>
+          <i class="fas fa-fw fa-sticky-note"></i>
+          <span>Laporan-Transaksi</span></a>
       </li>
       
 

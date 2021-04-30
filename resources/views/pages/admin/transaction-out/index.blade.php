@@ -9,11 +9,11 @@
          
           <div class="row">
             <div class="col-7">
-                <div class="card text-white bg-info mb-3">
-                <div class="card-header text-white bg-info">Pengeluaran</div>
+                <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Pengeluaran</div>
                 <div class="card-body">
                 <a href="{{ route('transaction-out.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-                <table class="table table-bordered text-white" id="pelanggan"  width="100%" cellspacing="0">
+                <table class="table table-bordered" id="pelanggan"  width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -47,7 +47,9 @@
                 </table>
                 <hr>
                 {{-- <p>jumlah data : {{ $jml }}</p> --}}
-                <p class="text-bold">Total Pengeluaran : <span class="text-dark">{{ $total }}</span> 
+                <p class="text-bold">Total Pengeluaran : <span class="text-info"> 
+                    {{ "Rp " . number_format($total, 2, ",", ".") }}
+                </span> 
                 dari 
                     
                 <span class="text-warning">{{ $jml }} </span> data</p>
@@ -57,7 +59,7 @@
               
             <div class="col-5 mt-5">
                 <div class="card mb-3">
-                    <div class="card-header">Pemasukan</div>
+                    <div class="card-header bg-dark text-white">Pemasukan</div>
                     {{-- <a href="{{ route('transaction-out.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a> --}}
                     <div class="card-body">
                     <table class="table table-bordered" width="100%" cellspacing="0">
@@ -82,7 +84,11 @@
                         </tbody>
                     </table>
                     {{-- <p>jumlah data : {{ $jml }}</p> --}}
-                    <p class="text-bold">Total Pemasukan : <span class="text-primary">{{ $totalTransaction }}</span> 
+
+         
+                    <p class="text-bold">Total Pemasukan : <span class="text-primary">
+                        {{ "Rp " . number_format($totalTransaction, 2, ",", ".") }}
+                        </span> 
                     dari 
                         
                     <span class="text-warning">{{ $jml }} </span> data</p>

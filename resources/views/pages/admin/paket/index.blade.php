@@ -15,7 +15,7 @@
               <div class="col-8">
                 <div class="card shadow mb-4">
                     <div class="card-header">
-                        <h6 class="m-0 font-weight-bold text-primary">Data paket</h6>
+                        <h6 class="m-0 font-weight-bold text-dark text-center">Data Paket</h6>
                  
                     </div>
                     <div class="card-body">
