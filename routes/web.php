@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'DashboardController@index');
+Route::get('/', 'FrontController@index');
+Route::get('/post-front', 'FrontController@post')->name('post-front');
+
+
+
+Route::get('/dashboard', 'DashboardController@index');
+
 
 Route::get('/pdf', 'TransactionController@generatePDF')->name('print-transaction');
 Route::get('/pdf-out', 'TransactionoutController@generatePDF')->name('print-transaction-out');
@@ -28,6 +34,8 @@ Route::resource('pelanggan', 'PelangganController');
 Route::resource('paket', 'PaketController');
 Route::resource('transaction', 'TransactionController');
 Route::resource('transaction-out', 'TransactionoutController');
+Route::resource('post', 'postController');
+
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
