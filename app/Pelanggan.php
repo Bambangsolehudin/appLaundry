@@ -10,8 +10,9 @@ class Pelanggan extends Model
     protected $guarded = [];
     // protected $fillable = ['kode', 'nama', 'nomor_telepon', 'alamat'];
 
-    // public function transaction()
-    // {
-    //     return $this->hasMany(Transaction::class, 'transactions_id', 'id');
-    // }
+    public function transaction()
+    {
+        return $this->hasOne('App\Transaction', 'pelanggan_id');
+        // return $this->hasMany(Transaction::class, 'transactions_id', 'id');
+    }
 }

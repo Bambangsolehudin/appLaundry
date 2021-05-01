@@ -8,11 +8,19 @@
           </div>
          
           <div class="row">
+         
             <div class="col-7">
+                @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <div class="card mb-3">
                 <div class="card-header bg-dark text-white">Pengeluaran</div>
                 <div class="card-body">
-                <a href="{{ route('transaction-out.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                <a href="{{ route('transaction-out.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i></a>
+                <a href="{{ route('print-transaction-out')}}" class="btn btn-warning btn-sm" target="_blank"> <i class="fas fa-print"></i></a>
+
                 <table class="table table-bordered" id="pelanggan"  width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -62,6 +70,7 @@
                     <div class="card-header bg-dark text-white">Pemasukan</div>
                     {{-- <a href="{{ route('transaction-out.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a> --}}
                     <div class="card-body">
+                        <a href="{{ route('print-transaction')}}" class="btn btn-warning btn-sm" target="_blank"> <i class="fas fa-print"></i></a>
                     <table class="table table-bordered" width="100%" cellspacing="0">
                         <thead>
                             <tr>

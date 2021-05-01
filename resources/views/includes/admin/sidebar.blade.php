@@ -3,7 +3,9 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand align-items-center justify-content-center" href="{{ url('/') }}">
-        <div class="text-lowercase">app<span class="text-primary "><span class="text-uppercase">L</span>aundry</span></div>
+        <div class=" sidebar-brand-text mx-3 text-lowercase">app<span class="text-primary "><span class="text-uppercase">L</span>aundry</span></div>
+
+        {{-- <div class="sidebar-brand-text mx-3">app<span class="text-primary">Laundry</span></div> --}}
       </a>
 
       <!-- Divider -->

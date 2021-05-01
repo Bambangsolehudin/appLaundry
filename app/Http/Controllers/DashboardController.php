@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Pelanggan;
+use App\Paket;
+use App\Transaction;
+use App\Transaction_out;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,6 +18,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('pages.admin.dashboard');
+        $transaction = Transaction::count();
+        $paket = Paket::count();
+        $pelanggan = Pelanggan::count();
+        $pengeluaran = Transaction_out::count();
+        return view('pages.admin.dashboard', compact('transaction', 'paket', 'pelanggan', 'pengeluaran'));
     }
 }

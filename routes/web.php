@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'DashboardController@index');
 
+Route::get('/pdf', 'TransactionController@generatePDF')->name('print-transaction');
+Route::get('/pdf-out', 'TransactionoutController@generatePDF')->name('print-transaction-out');
+
+
+
+
 Route::resource('pelanggan', 'PelangganController');
 Route::resource('paket', 'PaketController');
 Route::resource('transaction', 'TransactionController');
 Route::resource('transaction-out', 'TransactionoutController');
 
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

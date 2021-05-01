@@ -7,17 +7,25 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
+        
           </div>
 
           <!-- Content Row -->
           <div class="row justify-content-center">
+       
 
             <!-- Earnings (Monthly) Card Example -->
             {{-- <div class="col-xl-3 col-md-6 mb-4"> --}}
               
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Data Transaksi</h6>
+                        <h6 class="m-0 font-weight-bold text-dark text-center">Data Transaksi</h6>
+                        @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                        @endif
+                    
                         <!-- Button trigger modal -->
                         {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Launch demo modal
@@ -27,13 +35,11 @@
                  
                     </div>
                     <div class="card-body">
-                        @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                     
                         <div class="table-responsive">
-                            <a href="{{ route('transaction.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                            <a href="{{ route('transaction.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></a>
+                            <a href="{{ route('print-transaction')}}" class="btn btn-warning btn-sm" target="_blank"> <i class="fas fa-print"></i></a>
+
                             <table class="table table-bordered" id="transaction" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>

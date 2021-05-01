@@ -7,6 +7,8 @@ use App\Pelanggan;
 use App\Transaction;
 use Illuminate\Http\Request;
 
+use PDF;
+
 class TransactionController extends Controller
 {
     public function __construct()
@@ -58,7 +60,7 @@ class TransactionController extends Controller
 
         Transaction::create($data);
 
-        return redirect()->route('transaction.index');
+        return redirect()->route('transaction.index')->with('status', 'data transaksi berhasil ditambahkan');
     }
 
     /**
@@ -112,7 +114,7 @@ class TransactionController extends Controller
         $data['total'] = $total;
         $transaction = Transaction::find($id);
         $transaction->update($data);
-        return redirect()->route('transaction.index');
+        return redirect()->route('transaction.index')->with('status', 'data transaksi berhasil diupdate');
     }
 
     /**
@@ -125,6 +127,30 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::find($id);
         $transaction->delete();
-        return redirect()->route('transaction.index');
+        return redirect()->route('transaction.index')->with('status', 'data paket berhasil dihapus');
+    }
+
+    public function generatePDF()
+    {
+        $transactions = Transaction::with('paket', 'pelanggan')->get();
+
+
+        // $items1 = $items->pelanggan->nama;
+        // dd($transactions);
+        $totalTransaction = $transactions->sum('total');
+        $jmlTransaction = $transactions->count();
+
+
+        $total = $transactions->sum('nominal');
+        $jml = $transactions->count();
+        $pdf = PDF::loadView('pages.print.transaction-print', compact(
+            'transactions',
+            'jml',
+            'total',
+            'jmlTransaction',
+            'totalTransaction'
+        ));
+        $a = "T-" . mt_rand(10, 99);
+        return $pdf->download($a . '.pdf');
     }
 }
